@@ -8,12 +8,25 @@ Link:https://leetcode.com/problems/two-sum/
 Difficulty: Easy
 Date:13 Apr 2026
 
-Approach: HashMap - Store each num and its index
-for each num check (target - num) exists in map
+--Brute Force-------------------------------------
+Idea: Check pair of numbers using 2 loops
+Code: for i -> for j(j=i+1) -> if nums[i]+nums[j] == target
+Time: O(n²) | Space: O(1)
+problem: Too slow for large inputs.
+---------------------------------------------------
 
+--Optimization-------------------------------------
+HashMap gives O(1) lookup. Store each number as we scan.
+For num[i] check if(target - nums[i]) is already in map.
+If yes -> found the pair. If no-> add nums[i],i to map and move on.
 Time: O(n) | Space : O(n)
-Pattern: HashMap lookup
-What I learnt: Complement pattern - look for (target - current)
+---------------------------------------------------
+
+Pattern: HashMap Complement lookup
+What I learnt: When you need to eliminate a nested loop, ask:
+"Can I store something while I scan to avoid re-scanning?"
+HashMap = trade space for time.
+
 */
 class Solution {
     public int[] twoSum(int[] arr, int target) {
